@@ -1,7 +1,6 @@
 package com.minglemongles.minglejam.user.entity;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.data.annotation.Id;
 import lombok.*;
 
