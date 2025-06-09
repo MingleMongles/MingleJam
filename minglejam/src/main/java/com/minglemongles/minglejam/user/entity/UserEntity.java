@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @Builder
-public class User {
+public class UserEntity {
     @Id
     @Column(name = "user_id", columnDefinition = "VARCHAR(36)")
     private String userId;
