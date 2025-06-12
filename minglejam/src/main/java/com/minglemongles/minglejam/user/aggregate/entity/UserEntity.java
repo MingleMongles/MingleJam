@@ -1,4 +1,4 @@
-package com.minglemongles.minglejam.user.entity;
+package com.minglemongles.minglejam.user.aggregate.entity;
 
 import jakarta.persistence.*;
 import java.util.UUID;
