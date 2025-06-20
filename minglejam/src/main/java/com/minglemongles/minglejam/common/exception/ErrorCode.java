@@ -1,4 +1,4 @@
-package beyond.momentours.common.exception;
+package com.minglemongles.minglejam.common.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

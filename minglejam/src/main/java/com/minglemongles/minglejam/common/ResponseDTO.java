@@ -1,13 +1,14 @@
-package beyond.momentours.common;
+package com.minglemongles.minglejam.common;
 
-import beyond.momentours.common.exception.CommonException;
-import beyond.momentours.common.exception.ErrorCode;
-import beyond.momentours.common.exception.ExceptionDTO;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.validation.constraints.NotNull;
+import com.minglemongles.minglejam.common.exception.CommonException;
+import com.minglemongles.minglejam.common.exception.ErrorCode;
+import com.minglemongles.minglejam.common.exception.ExceptionDTO;
+import jakarta.annotation.Nullable;
 import lombok.Data;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.http.HttpStatus;
-import org.springframework.lang.Nullable;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 

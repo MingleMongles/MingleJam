@@ -1,6 +1,6 @@
-package beyond.momentours.common.exception;
+package com.minglemongles.minglejam.common.exception;
 
-import beyond.momentours.common.ResponseDTO;
+import com.minglemongles.minglejam.common.ResponseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 @Slf4j
 //필기. 해당 패키지에서 에러 발생시 작동하는 Handler
-@RestControllerAdvice(basePackages = "beyond.momentours")
+@RestControllerAdvice(basePackages = "com.minglemongles.minglejam")
 public class GlobalExceptionHandler {
 
     // 지원되지 않는 HTTP 메소드를 사용할 때 발생하는 예외
