@@ -1,4 +1,9 @@
 package com.minglemongles.minglejam.sample.query.serivce;
 
-public interface SampleService {
+import com.minglemongles.minglejam.sample.query.vo.response.SampleAllResponseVO;
+
+import java.util.List;
+
+public interface SampleQueryService {
+    List<SampleAllResponseVO> getSamples();
 }
