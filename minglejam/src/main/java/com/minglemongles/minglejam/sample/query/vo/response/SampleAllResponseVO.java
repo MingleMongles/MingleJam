@@ -1,4 +1,4 @@
-package com.minglemongles.minglejam.sample.command.domain.vo.request;
+package com.minglemongles.minglejam.sample.query.vo.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SampleCreateRequestVO {
+public class SampleAllResponseVO {
+
     private Long id;
     private String name;
-
 }
