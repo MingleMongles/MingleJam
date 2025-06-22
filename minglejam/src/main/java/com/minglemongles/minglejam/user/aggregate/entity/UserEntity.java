@@ -7,15 +7,15 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "tb_user")
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Builder
+
 public class UserEntity {
     @Id
-    @Column(name = "user_id", columnDefinition = "VARCHAR(36)")
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userId;
 
     @Column(name = "user_name", nullable = false)
     private String userName;
@@ -44,20 +44,20 @@ public class UserEntity {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    @PrePersist
-    public void uuid() {
-        if (this.userId == null) {
-            this.userId = UUID.randomUUID().toString();
-        }
-        if (userState == null) userState = true;
-        if (dormantState == null) dormantState = true;
-        if (this.createdAt == null) {
-            this.createdAt = new Timestamp(System.currentTimeMillis());
-        }
-        this.updatedAt = this.createdAt;
-        }
-    @PreUpdate
-    public void preUpdate() {
-        this.updatedAt = new Timestamp(System.currentTimeMillis());
-    }
+//    @PrePersist
+//    public void uuid() {
+//        if (this.userId == null) {
+//            this.userId = UUID.randomUUID().toString();
+//        }
+//        if (userState == null) userState = true;
+//        if (dormantState == null) dormantState = true;
+//        if (this.createdAt == null) {
+//            this.createdAt = new Timestamp(System.currentTimeMillis());
+//        }
+//        this.updatedAt = this.createdAt;
+//        }
+//    @PreUpdate
+//    public void preUpdate() {
+//        this.updatedAt = new Timestamp(System.currentTimeMillis());
+//    }
 }

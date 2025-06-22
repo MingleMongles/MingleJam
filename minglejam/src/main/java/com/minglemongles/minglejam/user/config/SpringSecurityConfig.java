@@ -1,33 +1,47 @@
 package com.minglemongles.minglejam.user.config;
 
-import org.springframework.boot.web.servlet.DispatcherType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
 public class SpringSecurityConfig {
 
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    public SpringSecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+    }
+
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable().cors().disable()
-                .authorizeHttpRequests(request -> request
-                        .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-                        .anyRequest().authenticated()	// 어떠한 요청이라도 인증필요
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/", "/home").permitAll()
+                        .anyRequest().authenticated()
                 )
-                .formLogin(login -> login	// form 방식 로그인 사용
-                        .defaultSuccessUrl("/view/dashboard", true)	// 성공 시 dashboard로
-                        .permitAll()	// 대시보드 이동이 막히면 안되므로 얘는 허용
+                .formLogin((form) -> form
+                        .loginPage("/login")
+                        .permitAll()
                 )
-                .logout(withDefaults());	// 로그아웃은 기본설정으로 (/logout으로 인증해제)
+                .logout((logout) -> logout.permitAll());
 
         return http.build();
     }
+
+//    @Bean
+//    public UserDetailsService userDetailsService() {  >> UserDetailsService 클래스 생성 필요
+//        UserDetails user =                            >> UserDetails 클래스 생성 필요
+//                User.withDefaultPasswordEncoder()     >> User 클래스 생성 필요
+//                        .username("user")
+//                        .password("password")
+//                        .roles("USER")
+//                        .build();
+//
+//        return new InMemoryUserDetailsManager(user);
+//    }
 }
