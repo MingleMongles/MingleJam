@@ -1,81 +1,14 @@
-<<<<<<< HEAD
-server:
-  port: 8080
-
-spring:
-  datasource:
-    url:
-    username: root
-    password:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: ??_?????_ID
-            client-secret: ??_?????_???
-            redirect-uri: "{baseUrl}/login/oauth2/code/google"
-            scope:
-              - profile
-              - email
-          kakao:
-            client-id: ???_REST_API_?
-            client-secret: ???_???_? # (??)
-            client-authentication-method: POST
-            authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/login/oauth2/code/kakao"
-            scope:
-              - profile_nickname
-              - account_email
-            client-name: Kakao
-          discord:
-            client-id: ????_?????_ID
-            client-secret: ????_???
-            authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/login/oauth2/code/discord"
-            scope:
-              - identify
-              - email
-            client-name: Discord
-        provider:
-          kakao:
-            authorization-uri: https://kauth.kakao.com/oauth/authorize
-            token-uri: https://kauth.kakao.com/oauth/token
-            user-info-uri: https://kapi.kakao.com/v2/user/me
-            user-name-attribute: id
-          discord:
-            authorization-uri: https://discord.com/api/oauth2/authorize
-            token-uri: https://discord.com/api/oauth2/token
-            user-info-uri: https://discord.com/api/users/@me
-            user-name-attribute: id
-
-jwt:
-  secret: your_jwt_secret_key
-  expiration: 3600000 # 1?? (ms)
-
-logging:
-  level:
-    org.hibernate.SQL: debug
-    org.springframework.security: debug
-=======
 spring:
   application:
     name: minglejam
 
+  server:
+    port: 8080
+
   datasource:
-    url: jdbc:postgresql://${DATABASE_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
-    username: ${POSTGRES_USER}
-    password: ${POSTGRES_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/minglejamdb
+    username: minglejam
+    password: jinjin
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -89,4 +22,3 @@ spring:
 
 mybatis:
   mapper-locations: classpath:/mappers/**/*.xml
->>>>>>> dev
